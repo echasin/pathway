@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Vector.
+    -->
+    <changeSet id="20170828025311-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="pathwayrecordtype_id"
+                                 baseTableName="vector"
+                                 constraintName="fk_vector_pathwayrecordtype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pathwayrecordtype"/>
+
+        <addForeignKeyConstraint baseColumnNames="pathwayclass_id"
+                                 baseTableName="vector"
+                                 constraintName="fk_vector_pathwayclass_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pathwayclass"/>
+
+        <addForeignKeyConstraint baseColumnNames="pathwaycategory_id"
+                                 baseTableName="vector"
+                                 constraintName="fk_vector_pathwaycategory_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pathwaycategory"/>
+
+        <addForeignKeyConstraint baseColumnNames="pathwaytype_id"
+                                 baseTableName="vector"
+                                 constraintName="fk_vector_pathwaytype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pathwaytype"/>
+
+        <addForeignKeyConstraint baseColumnNames="pathway_id"
+                                 baseTableName="vector"
+                                 constraintName="fk_vector_pathway_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pathway"/>
+
+    </changeSet>
+</databaseChangeLog>
