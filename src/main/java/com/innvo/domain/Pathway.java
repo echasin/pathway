@@ -1,8 +1,13 @@
 package com.innvo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.innvo.json.StringJsonUserType;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -20,6 +25,7 @@ import java.util.Objects;
 @Table(name = "pathway")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "pathway")
+@TypeDefs({@TypeDef(name = "StringJsonObject", typeClass = StringJsonUserType.class)})
 public class Pathway implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,10 +47,12 @@ public class Pathway implements Serializable {
 
     @Size(max = 4000)
     @Column(name = "originjson", length = 4000)
+    @Type(type = "StringJsonObject")
     private String originjson;
 
     @Size(max = 4000)
     @Column(name = "destinationjson", length = 4000)
+    @Type(type = "StringJsonObject")
     private String destinationjson;
 
     @Size(max = 255)
