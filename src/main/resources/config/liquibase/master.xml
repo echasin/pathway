@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+   <!--  <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>-->
     <include file="config/liquibase/changelog/20170828025310_added_entity_Pathway.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170828025311_added_entity_Vector.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170828025312_added_entity_Pathwaystatus.xml" relativeToChangelogFile="false"/>
@@ -20,4 +20,8 @@
     <include file="config/liquibase/changelog/20170828025316_added_entity_constraints_Pathwaytype.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20170828025310_added_entity_constraints_Pathway.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    
+    <!-- DATA LOADING FILES -->
+    <include relativeToChangelogFile="false" file="classpath:config/data/load_pathway_data.xml"/>
+    
 </databaseChangeLog>

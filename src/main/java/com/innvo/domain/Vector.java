@@ -2,7 +2,12 @@ package com.innvo.domain;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.innvo.json.StringJsonUserType;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -17,6 +22,7 @@ import java.util.Objects;
 @Table(name = "vector")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "vector")
+@TypeDefs({@TypeDef(name = "StringJsonObject", typeClass = StringJsonUserType.class)})
 public class Vector implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,10 +44,12 @@ public class Vector implements Serializable {
 
     @Size(max = 4000)
     @Column(name = "originjson", length = 4000)
+    @Type(type = "StringJsonObject")
     private String originjson;
 
     @Size(max = 4000)
     @Column(name = "destinationjson", length = 4000)
+    @Type(type = "StringJsonObject")
     private String destinationjson;
 
     @Size(max = 255)

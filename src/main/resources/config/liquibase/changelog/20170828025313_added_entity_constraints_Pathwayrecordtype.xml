@@ -7,18 +7,7 @@
         Added the constraints for entity Pathwayrecordtype.
     -->
     <changeSet id="20170828025313-2" author="jhipster">
-        
-        <addForeignKeyConstraint baseColumnNames="pathwaystatus_id"
-                                 baseTableName="pathwayrecordtype"
-                                 constraintName="fk_pathwayrecordtype_pathwaystatus_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="pathwaystatus"/>
-
-        <addForeignKeyConstraint baseColumnNames="pathwayclass_id"
-                                 baseTableName="pathwayrecordtype"
-                                 constraintName="fk_pathwayrecordtype_pathwayclass_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="pathwayclass"/>
+     
 
     </changeSet>
 </databaseChangeLog>
