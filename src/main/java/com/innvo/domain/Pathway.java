@@ -59,23 +59,19 @@ public class Pathway implements Serializable {
     @Column(name = "description", length = 255)
     private String description;
 
-    @NotNull
     @Size(max = 25)
-    @Column(name = "status", length = 25, nullable = false)
+    @Column(name = "status", length = 25)
     private String status;
 
-    @NotNull
     @Size(max = 50)
-    @Column(name = "lastmodifiedby", length = 50, nullable = false)
+    @Column(name = "lastmodifiedby", length = 50)
     private String lastmodifiedby;
 
-    @NotNull
-    @Column(name = "lastmodifieddatetime", nullable = false)
+    @Column(name = "lastmodifieddatetime")
     private ZonedDateTime lastmodifieddatetime;
 
-    @NotNull
     @Size(max = 25)
-    @Column(name = "domain", length = 25, nullable = false)
+    @Column(name = "domain", length = 25)
     private String domain;
 
     @OneToMany(mappedBy = "pathway")
