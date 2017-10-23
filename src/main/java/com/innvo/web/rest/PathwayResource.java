@@ -5,12 +5,14 @@ import com.innvo.domain.Pathway;
 
 import com.innvo.repository.PathwayRepository;
 import com.innvo.repository.search.PathwaySearchRepository;
+import com.innvo.service.DomainService;
 import com.innvo.web.rest.util.HeaderUtil;
 import com.innvo.web.rest.util.PaginationUtil;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -21,7 +23,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -43,6 +46,9 @@ public class PathwayResource {
     private final PathwayRepository pathwayRepository;
 
     private final PathwaySearchRepository pathwaySearchRepository;
+    
+    @Autowired
+    DomainService domainService;
 
     public PathwayResource(PathwayRepository pathwayRepository, PathwaySearchRepository pathwaySearchRepository) {
         this.pathwayRepository = pathwayRepository;
@@ -63,6 +69,9 @@ public class PathwayResource {
         if (pathway.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new pathway cannot already have an ID")).body(null);
         }
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
+        pathway.setLastmodifieddatetime(lastmodifieddate);
+        pathway.setDomain("Active");
         Pathway result = pathwayRepository.save(pathway);
         pathwaySearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/pathways/" + result.getId()))
@@ -86,6 +95,9 @@ public class PathwayResource {
         if (pathway.getId() == null) {
             return createPathway(pathway);
         }
+        ZonedDateTime lastmodifieddate = ZonedDateTime.now(ZoneId.systemDefault());
+        pathway.setLastmodifieddatetime(lastmodifieddate);
+        pathway.setDomain(domainService.getDomain());
         Pathway result = pathwayRepository.save(pathway);
         pathwaySearchRepository.save(result);
         return ResponseEntity.ok()
