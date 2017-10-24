@@ -1,0 +1,2 @@
+id;name;nameshort;originjson;destinationjson;description;status;lastmodifiedby;lastmodifieddatetime;domain;pathwayrecordtype_id;pathwayclass_id;pathwaycategory_id;pathwaytype_id
+1151;"Example One - SJC-IAD Direct";"SJC-IAD";"{"id":1000, "name": "San Jose International Airport","nameshort": "SJC"}";"{"id":1002, "name": "Washington Dulles International Airport", "nameshort":"IAD"}";"Create liquibase files to create San Jose International and Dulles International Airport";"Actvie";"echasin";"2017-08-28 00:00:00";"DEV";951;1001;1051;1101

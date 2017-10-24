@@ -1,0 +1,2 @@
+id;name;nameshort;originjson;destinationjson;description;status;lastmodifiedby;lastmodifieddatetime;domain;pathwayrecordtype_id;pathwayclass_id;pathwaycategory_id;pathwaytype_id;pathway_id
+1201;"Example 1 Vector SJC-IAD";"V-SJC-IAD";"{"asset_id":1000, "asset_name": "San Jose International Airport","asset_nameshort": "SJC" }";"{"asset_id":1002, "asset_name": "Washington Dulles International Airport", "asset_nameshort":"IAD"}";"A pathway may have zero-one-or-many vectors";"Active";"echasin";"2017-08-28 00:00:00";"DEV";951;1001;1051;1101;1151

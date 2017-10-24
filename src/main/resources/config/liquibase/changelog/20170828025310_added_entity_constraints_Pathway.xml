@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Pathway.
+    -->
+    <changeSet id="20170828025310-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="pathwayrecordtype_id"
+                                 baseTableName="pathway"
+                                 constraintName="fk_pathway_pathwayrecordtype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pathwayrecordtype"/>
+
+        <addForeignKeyConstraint baseColumnNames="pathwayclass_id"
+                                 baseTableName="pathway"
+                                 constraintName="fk_pathway_pathwayclass_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pathwayclass"/>
+
+        <addForeignKeyConstraint baseColumnNames="pathwaycategory_id"
+                                 baseTableName="pathway"
+                                 constraintName="fk_pathway_pathwaycategory_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pathwaycategory"/>
+
+        <addForeignKeyConstraint baseColumnNames="pathwaytype_id"
+                                 baseTableName="pathway"
+                                 constraintName="fk_pathway_pathwaytype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="pathwaytype"/>
+
+    </changeSet>
+</databaseChangeLog>

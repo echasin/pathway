@@ -1,0 +1,127 @@
+//ASSET.JAVA will be external import to the Route microservice.
+entity Pathway{
+	name String required maxlength(100),
+    nameshort String required maxlength(25),
+    originjson String maxlength(4000),
+    destinationjson String maxlength(4000),
+    description String maxlength (255),
+    status String required maxlength(25),
+    lastmodifiedby String required maxlength(50),
+    lastmodifieddatetime ZonedDateTime required,
+    domain String required  maxlength(25)
+}
+
+entity Vector{
+    name String required maxlength(100),
+    nameshort String required maxlength(25),
+    originjson String maxlength(4000),
+    destinationjson String maxlength(4000),
+    description String maxlength (255),
+    status String required maxlength(25),
+    lastmodifiedby String required maxlength(50),
+    lastmodifieddatetime ZonedDateTime required
+    domain String required  maxlength(25)
+}
+
+entity Pathwayrecordtype {
+	name String required maxlength(100),
+    nameshort String required maxlength(25),
+    description String maxlength (255),
+    status String required maxlength(25),
+    lastmodifiedby String required maxlength(50),
+    lastmodifieddatetime ZonedDateTime required
+    domain String required  maxlength(25)
+}
+entity Pathwayclass {
+	name String required maxlength(100),
+    nameshort String required maxlength(25),
+    description String maxlength (255),
+    status String required maxlength(25),
+    lastmodifiedby String required maxlength(50),
+    lastmodifieddatetime ZonedDateTime required
+    domain String required  maxlength(25)
+}
+
+entity Pathwaycategory {
+	name String required maxlength(100),
+    nameshort String required maxlength(25),
+    description String maxlength (255),
+    status String required maxlength(25),
+    lastmodifiedby String required maxlength(50),
+    lastmodifieddatetime ZonedDateTime required
+    domain String required  maxlength(25)
+}
+
+entity Pathwaytype {
+	name String required maxlength(100),
+    nameshort String required maxlength(25),
+    description String maxlength (255),
+    status String required maxlength(25),
+    lastmodifiedby String required maxlength(50),
+    lastmodifieddatetime ZonedDateTime required
+    domain String required  maxlength(25)
+}
+
+//ROUTES STATUS
+relationship OneToMany {
+	Pathway{vector} to Vector{pathway}
+}
+
+//Pathway Tazonomy
+
+relationship ManyToOne {
+	Pathway{pathwayrecordtype(name)} to Pathwayrecordtype
+}
+
+relationship ManyToOne {
+	Pathway{pathwayclass(name)} to Pathwayclass
+}
+
+relationship ManyToOne {
+	Pathway{pathwaycategory(name)} to Pathwaycategory
+}
+
+relationship ManyToOne {
+	Pathway{pathwaytype(name)} to Pathwaytype
+}
+
+//Pathway Tazonomy
+relationship ManyToOne {
+	Vector{pathwayrecordtype(name)} to Pathwayrecordtype
+}
+
+relationship ManyToOne {
+	Vector{pathwayclass(name)} to Pathwayclass
+}
+
+relationship ManyToOne {
+	Vector{pathwaycategory(name)} to Pathwaycategory
+}
+
+relationship ManyToOne {
+	Vector{pathwaytype(name)} to Pathwaytype
+}
+
+//TAXOMONY
+relationship ManyToOne {
+	Pathwayclass{pathwayrecordtype(name)} to Pathwayrecordtype
+}
+relationship ManyToOne {
+	Pathwaycategory{pathwayclass(name)} to Pathwayclass
+}
+
+relationship ManyToOne {
+	Pathwaytype{pathwaycategory(name)} to Pathwaycategory
+}
+
+
+
+paginate Pathway with pagination
+paginate Vector with pagination
+paginate Pathwayrecordtype with pagination
+paginate Pathwayclass with pagination
+paginate Pathwaycategory with pagination
+paginate Pathwaytype with pagination
+
+microservice * with pathway
+search * with elasticsearch
